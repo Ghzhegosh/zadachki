@@ -1,0 +1,37 @@
+def find_outlier(integers):
+    even = 0
+    odd = 0
+    index = 0
+    for i in range(len(integers)):
+        if integers[i] % 2 == 0:
+            even += 1
+            if odd > 1:
+                index = i
+            elif odd == 1 and even > 1:
+                if integers[0] % 2 == 1:
+                    print('q')
+                    return integers[0]
+                elif integers[1]%2 == 1:
+                    print('w')
+                    print(odd)
+                    return integers[1]
+        else:
+            odd += 1
+            if even > 1:
+                index = i
+            elif even == 1 and odd > 1:
+                if integers[0] % 2 == 0:
+                    print('e')
+                    print(odd)
+                    print(even)
+                    return integers[0]
+                elif integers[1] % 2 == 0:
+                    print('r')
+                    return integers[1]
+    return integers[index]
+
+#Ниже идут тестовые штуки
+integer = [-4825931, -5927, 7853905, 1163287, -2367173, 2469381, -6508767, -9853577, -6222479, 3716951, 7319191, -7459915, -6524307, -5567499, -6419737, 1741237, 9012857, 8490345, -4684695, -3434751, 4164009, -4772649, 501375, 4033587, 3577194, -6248297, 5231073, 8517475]
+a = find_outlier(integer)
+
+print(a)
